@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const Form = styled.View`
     display: flex;
     width: 100%;
-    background-color:#cecece;
+    background-color: #BDBDBD;
     flex-direction: column;
     gap: 40px;
     padding: 10px;

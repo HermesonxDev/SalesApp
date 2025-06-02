@@ -1,9 +1,16 @@
 import { TouchableOpacityProps } from "react-native";
 import { Container, Label } from "./styles";
 
-const Button: React.FC<TouchableOpacityProps> = ({ children, ...rest }) => (
+interface IButtonProps extends TouchableOpacityProps {
+    width?: string,
+    backgroundColor?: string
+}
+
+const Button: React.FC<IButtonProps> = ({ children, width, backgroundColor, ...rest }) => (
     <Container
-        activeOpacity={0.6}
+        width={width}
+        backgroundColor={backgroundColor}
+        activeOpacity={0.8}
         {...rest}
     >
         <Label>{ children }</Label>

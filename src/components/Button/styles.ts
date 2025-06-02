@@ -1,8 +1,13 @@
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableOpacity`
-    border-width: 1px;
-    width: 100%;
+interface IContainerProps {
+    width?: string,
+    backgroundColor?: string
+}
+
+export const Container = styled.TouchableOpacity<IContainerProps>`
+    width: ${({ width }: IContainerProps) => width || '100%'};
+    background-color: ${({ backgroundColor }:IContainerProps ) => backgroundColor || '#E15610'};
     height: 40px;
     border-radius: 5px;
     justify-content: center;
@@ -10,6 +15,7 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Label = styled.Text`
+    color: white;
     font-weight: bold;
-    font-size: 20;
+    font-size: 20px;
 `;
