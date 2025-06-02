@@ -4,7 +4,7 @@ import AuthRoutes from "./auth.routes"
 
 const Routes: React.FC = () => {
 
-    const logged = false
+    const logged = true
     
     return (
         <NavigationContainer>

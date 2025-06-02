@@ -1,16 +1,41 @@
-import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "../screens/Home";
+import { Feather } from "@expo/vector-icons"
+import Customers from "../screens/Customers";
+import Products from "../screens/Products";
 
-const Stack = createStackNavigator()
+const Drawer = createDrawerNavigator()
 
 const AppRoutes: React.FC = () => {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen
+        <Drawer.Navigator screenOptions={{ title: '' }}>
+            <Drawer.Screen
                 name="home"
                 component={Home}
+                options={{
+                    drawerIcon: ({ color, size }) => <Feather name="home" color={color} size={size} />,
+                    drawerLabel: 'Início'
+                }}
             />
-        </Stack.Navigator>
+
+            <Drawer.Screen
+                name="customers"
+                component={Customers}
+                options={{
+                    drawerIcon: ({ color, size }) => <Feather name="user" color={color} size={size} />,
+                    drawerLabel: 'Clientes'
+                }}
+            />
+
+            <Drawer.Screen
+                name="products"
+                component={Products}
+                options={{
+                    drawerIcon: ({ color, size }) => <Feather name="package" color={color} size={size} />,
+                    drawerLabel: 'Produtos'
+                }}
+            />
+        </Drawer.Navigator>
     )
 }
 
