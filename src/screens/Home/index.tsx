@@ -1,12 +1,12 @@
 import { Text } from "react-native"
 import { Container } from "./styles"
 
-const Login: React.FC = () => {
+const Home: React.FC = () => {
     return (
         <Container>
-            <Text>Login</Text>
+            <Text>Home</Text>
         </Container>
     )
 }
 
-export default Login
+export default Home
