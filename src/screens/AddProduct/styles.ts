@@ -7,9 +7,15 @@ export const Container = styled.View`
 `;
 
 export const Form = styled.View`
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+    width: 90%;
 `;
 
-export const Fields = styled.View``;
-
-export const Field = styled.View``;
+export const Fields = styled.View`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+`;
