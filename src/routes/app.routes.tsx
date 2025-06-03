@@ -8,6 +8,7 @@ import AddCustomer from "../screens/AddCustomer";
 import AddProduct from "../screens/AddProduct";
 import Logout from "../screens/Logout";
 import PDV from "../screens/PDV";
+import Orders from "../screens/Orders";
 
 const Tab = createBottomTabNavigator()
 
@@ -93,11 +94,20 @@ const AppRoutes: React.FC = () => {
             />
 
             <Drawer.Screen
-                name="PDV"
+                name="pdv"
                 component={PDV}
                 options={{
                     drawerIcon: ({ color, size }) => <Feather name="shopping-cart" color={color} size={size} />,
                     drawerLabel: 'PDV'
+                }}
+            />
+
+            <Drawer.Screen
+                name="orders"
+                component={Orders}
+                options={{
+                    drawerIcon: ({ color, size }) => <Feather name="tag" color={color} size={size} />,
+                    drawerLabel: 'Pedidos'
                 }}
             />
 

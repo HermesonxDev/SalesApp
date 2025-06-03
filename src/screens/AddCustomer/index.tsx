@@ -6,8 +6,14 @@ import Title from "../../components/Title"
 import Label from "../../components/Label"
 import Input from "../../components/Input"
 import Button from "../../components/Button"
+import api from "../../Services/api"
+import format_CPF_and_CNPJ from "../../utils/format_CPF_and_CNPJ"
+import unformat from "../../utils/unformat"
+import formatPhone from "../../utils/formatPhone"
 
 const AddCustomer: React.FC = () => {
+
+    const [loading, setLoading] = useState<boolean>(false)
 
     const [formState, setFormState] = useState<CustomerForm>({
         first_name: '',
@@ -18,10 +24,47 @@ const AddCustomer: React.FC = () => {
     })
 
     const handleChangeForm = (value: string, key: keyof CustomerForm) => {
-        setFormState((prev) => ({
-            ...prev,
-            [key]: value
-        }))
+        setFormState((prev) => {
+
+            if (key === 'telephone') {
+                return {
+                    ...prev,
+                    [key]: formatPhone(value)
+                }
+            }
+
+            if (key === 'cpf_cnpj') {
+                return {
+                    ...prev,
+                    [key]: format_CPF_and_CNPJ(value)
+                }
+            }
+
+            return {
+                ...prev,
+                [key]: value
+            }
+        })
+    }
+
+    const handleSendForm = async () => {
+        try {
+            setLoading(true)
+
+            const formData = {
+                ...formState,
+                telephone: unformat(formState.telephone),
+                cpf_cnpj: unformat(formState.cpf_cnpj)
+            }
+
+            const response = await api.post('/create/customer', formData)
+            console.log(response)
+
+            setLoading(false)
+        } catch (error) {
+            setLoading(false)
+            console.log(error)
+        }
     }
 
     return (
@@ -86,7 +129,9 @@ const AddCustomer: React.FC = () => {
                     </View>
                 </Fields>
 
-                <Button>Salvar</Button>
+                <Button
+                    onPress={handleSendForm}
+                >Salvar</Button>
             </Form>
         </Container>
     )
