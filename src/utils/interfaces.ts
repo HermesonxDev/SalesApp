@@ -9,3 +9,11 @@ export interface ProductForm {
     description: string,
     quantity: number
 }
+
+export interface CustomerForm {
+    first_name: string,
+	last_name: string,
+	telephone: string,
+	cpf_cnpj: string,
+	address: string
+}

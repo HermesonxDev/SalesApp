@@ -5,3 +5,17 @@ export const Container = styled.View`
     justify-content: center;
     align-items: center;
 `;
+
+export const Form = styled.View`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 75%;
+    width: 90%;
+`;
+
+export const Fields = styled.View`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+`;
