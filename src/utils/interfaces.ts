@@ -17,3 +17,16 @@ export interface CustomerForm {
 	cpf_cnpj: string,
 	address: string
 }
+
+export interface Customer {
+    id: number,
+    first_name: string,
+    last_name: string,
+    telephone: string,
+    cpf_cnpj: string,
+    address: string,
+    active: number,
+    deleted: number,
+    created_at: string,
+    updated_at: string
+}

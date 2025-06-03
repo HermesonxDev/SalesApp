@@ -60,11 +60,11 @@ const AddCustomer: React.FC = () => {
                 cpf_cnpj: unformat(formState.cpf_cnpj)
             }
 
-            const response = await api.post('/create/customer', formData)
+            const { data } = await api.post('/create/customer', formData)
 
             Toast.show({
                 type: 'success',
-                text1: translate(response.data.message),
+                text1: translate(data.message),
                 visibilityTime: 3500
             })
 
