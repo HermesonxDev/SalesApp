@@ -6,7 +6,7 @@ export const Container = styled.View`
     align-items: center;
 `;
 
-export const Buttons = styled.View`
+export const Options = styled.View`
     display: flex;
     flex-direction: row;
     gap: 15px;

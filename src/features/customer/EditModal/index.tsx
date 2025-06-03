@@ -16,14 +16,14 @@ interface IEditModalProps {
     customer: Customer | null,
     visible: boolean,
     onClose(): void,
-    refresh(): void
+    onRefresh(): void
 }
 
 const EditModal: React.FC<IEditModalProps> = ({
     customer,
     visible,
     onClose,
-    refresh
+    onRefresh
 }) => {
     
     const [loading, setLoading] = useState<boolean>(false)
@@ -79,7 +79,7 @@ const EditModal: React.FC<IEditModalProps> = ({
             })
 
             onClose()
-            refresh()
+            onRefresh()
             setLoading(false)
         } catch (error) {
             setLoading(false)

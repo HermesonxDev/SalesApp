@@ -3,7 +3,10 @@ const translations = {
     'Error on create customer.': 'Erro ao criar cliente.',
 
     'Customer edited has successfully!': 'Cliente editado com sucesso!',
-    'Error on editing customer.': 'Erro ao editar cliente.'
+    'Error on editing customer.': 'Erro ao editar cliente.',
+
+    'Customer deleted has successfully!': 'Cliente deletado com sucesso!',
+    'Error on deleting customer.': 'Erro ao deletar cliente.'
 } as const
 
 export type MessageKey = keyof typeof translations;
