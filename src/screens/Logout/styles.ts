@@ -5,3 +5,9 @@ export const Container = styled.View`
     justify-content: center;
     align-items: center;
 `;
+
+export const Buttons = styled.View`
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+`;
