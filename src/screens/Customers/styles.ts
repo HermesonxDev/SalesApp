@@ -8,11 +8,9 @@ export const Container = styled.View`
 `;
 
 export const Grid = styled.View`
-    display: flex;
-    flex-direction: column;
     width: 90%;
     height: 80%;
-    gap: 30px;
+    overflow: hidden;
 `;
 
 export const Body = styled.View`

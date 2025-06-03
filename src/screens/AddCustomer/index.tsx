@@ -1,18 +1,16 @@
-import { Container, Fields, Form } from "./styles"
 import { useState } from "react"
-import { CustomerForm } from "../../utils/interfaces"
 import { View } from "react-native"
+import { Container, Fields, Form } from "./styles"
+import Toast from "react-native-toast-message"
+import api from "../../Services/api"
 import Title from "../../components/Title"
 import Label from "../../components/Label"
 import Input from "../../components/Input"
 import Button from "../../components/Button"
-import api from "../../Services/api"
-import format_CPF_and_CNPJ from "../../utils/format_CPF_and_CNPJ"
-import unformat from "../../utils/unformat"
-import formatPhone from "../../utils/formatPhone"
-import Toast from "react-native-toast-message"
-import translate from "../../utils/translate"
 import Loading from "../../components/Loading"
+import translate from "../../utils/translate"
+import { CustomerForm } from "../../utils/interfaces"
+import { format_CPF_and_CNPJ, formatPhone, unformat } from "../../utils/functions"
 
 const AddCustomer: React.FC = () => {
 
@@ -121,6 +119,7 @@ const AddCustomer: React.FC = () => {
                             value={formState.telephone}
                             onChangeText={(text) => handleChangeForm(text, 'telephone')}
                             placeholder="Digite o Telefone do Cliente"
+                            keyboardType="phone-pad"
                         />
                     </View>
 
@@ -130,6 +129,7 @@ const AddCustomer: React.FC = () => {
                             value={formState.cpf_cnpj}
                             onChangeText={(text) => handleChangeForm(text, 'cpf_cnpj')}
                             placeholder="Digite o CPF/CNPJ do Cliente"
+                            keyboardType="phone-pad"
                         />
                     </View>
 
