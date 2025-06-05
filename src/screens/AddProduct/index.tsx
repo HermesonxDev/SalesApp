@@ -16,10 +16,10 @@ const AddProduct: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(false)
     const [formState, setFormState] = useState<ProductForm>({
-        name: "",
-        value: "",
-        description: "",
-        quantity: "",
+        name: '',
+        value: '',
+        description: '',
+        quantity: '',
     })
 
     const handleChangeForm = (value: string, key: keyof ProductForm) => {
@@ -63,10 +63,10 @@ const AddProduct: React.FC = () => {
 
     const clearForm = () => {
         setFormState({
-            name: "",
-            value: "",
-            description: "",
-            quantity: "",
+            name: '',
+            value: '',
+            description: '',
+            quantity: '',
         })
     }
 
@@ -76,49 +76,49 @@ const AddProduct: React.FC = () => {
                 <Title>Adicionar Produto</Title>
 
                 <Fields>
-                <View>
-                    <Label padding="0 0 3px 3px">Nome</Label>
-                    <Input
-                        value={formState.name}
-                        onChangeText={(text) => handleChangeForm(text, "name")}
-                        placeholder="Digite o Nome do Produto"
-                    />
-                </View>
+                    <View>
+                        <Label padding="0 0 3px 3px">Nome *</Label>
+                        <Input
+                            value={formState.name}
+                            onChangeText={(text) => handleChangeForm(text, "name")}
+                            placeholder="Digite o Nome do Produto"
+                        />
+                    </View>
 
-                <View>
-                    <Label padding="0 0 3px 3px">Valor</Label>
-                    <Input
-                        value={formState.value ? formatCurrencyBRL(formState.value) : ''}
-                        placeholder="Digite o Valor do Produto"
-                        keyboardType="numeric"
-                        onChangeText={(text) => {
-                            const onlyDigits = text.replace(/\D/g, "");
-                            handleChangeForm(onlyDigits, "value");
-                        }}
-                    />
-                </View>
+                    <View>
+                        <Label padding="0 0 3px 3px">Valor *</Label>
+                        <Input
+                            value={formState.value ? formatCurrencyBRL(formState.value) : ''}
+                            placeholder="Digite o Valor do Produto"
+                            keyboardType="numeric"
+                            onChangeText={(text) => {
+                                const onlyDigits = text.replace(/\D/g, "");
+                                handleChangeForm(onlyDigits, "value");
+                            }}
+                        />
+                    </View>
 
-                <View>
-                    <Label padding="0 0 3px 3px">Descrição</Label>
-                    <Input
-                        value={formState.description}
-                        onChangeText={(text) => handleChangeForm(text, "description")}
-                        placeholder="Digite a Descrição do Produto"
-                        multiline
-                        numberOfLines={5}
-                        height="100px"
-                    />
-                </View>
+                    <View>
+                        <Label padding="0 0 3px 3px">Descrição</Label>
+                        <Input
+                            value={formState.description}
+                            onChangeText={(text) => handleChangeForm(text, "description")}
+                            placeholder="Digite a Descrição do Produto"
+                            multiline
+                            numberOfLines={5}
+                            height="100px"
+                        />
+                    </View>
 
-                <View>
-                    <Label padding="0 0 3px 3px">Quantidade</Label>
-                    <Input
-                        value={formState.quantity}
-                        placeholder="Digite a Quantidade Inicial do Produto"
-                        keyboardType="numeric"
-                        onChangeText={(text) => handleChangeForm(text, "quantity")}
-                    />
-                </View>
+                    <View>
+                        <Label padding="0 0 3px 3px">Quantidade</Label>
+                        <Input
+                            value={formState.quantity}
+                            placeholder="Digite a Quantidade Inicial do Produto"
+                            keyboardType="numeric"
+                            onChangeText={(text) => handleChangeForm(text, "quantity")}
+                        />
+                    </View>
                 </Fields>
 
                 <Button onPress={handleSendForm}>Salvar</Button>

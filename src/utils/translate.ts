@@ -17,7 +17,11 @@ const translations = {
     'Error on editing product.': 'Erro ao editar produto.',
 
     'Product deleted has successfully!': 'Produto deletado com sucesso!',
-    'Error on deleting product.': 'Erro ao deletar produto'
+    'Error on deleting product.': 'Erro ao deletar produto',
+
+    // Pedido
+    'Order created has successfully!': 'Pedido criado com sucesso!',
+    'Error on create order.': 'Erro ao criar pedido.'
 } as const
 
 export type MessageKey = keyof typeof translations;
