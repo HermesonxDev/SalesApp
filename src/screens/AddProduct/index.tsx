@@ -9,7 +9,7 @@ import { View } from "react-native";
 import Toast from "react-native-toast-message";
 import api from "../../Services/api";
 import translate from "../../utils/translate";
-import { formatCurrencyBRL } from "../../utils/functions";
+import { formatCurrencyBRL, unformat } from "../../utils/functions";
 import Loading from "../../components/Loading";
 
 const AddProduct: React.FC = () => {
@@ -35,7 +35,7 @@ const AddProduct: React.FC = () => {
 
             const formData = {
                 ...formState,
-                value: (parseFloat(formState.value.replace(/\D/g, "")) / 100).toString(),
+                value: parseFloat(unformat(formState.value)),
                 quantity: parseFloat(formState.quantity),
             };
 

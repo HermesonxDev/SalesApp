@@ -54,3 +54,11 @@ export interface CustomerModals {
     edit: boolean,
     delete: boolean
 }
+
+export interface PDVForm {
+    customer_id: number,
+	product_id: number,
+	product_quantity: string,
+	description: string,
+	value: string
+}

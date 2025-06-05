@@ -9,7 +9,7 @@ import Loading from "../../../components/Loading"
 import Label from "../../../components/Label"
 import Input from "../../../components/Input"
 import Title from "../../../components/Title"
-import { formatCurrencyBRL } from "../../../utils/functions"
+import { formatCurrencyBRL, unformat } from "../../../utils/functions"
 import Button from "../../../components/Button"
 
 interface IEditModalProps {
@@ -48,10 +48,11 @@ const EditModal: React.FC<IEditModalProps> = ({
 
             const formData = {
                 ...formState,
-                value: (parseFloat(formState.value.replace(/\D/g, "")) / 100).toString(),
+                value: parseFloat(unformat(formState.value)),
                 quantity: parseFloat(formState.quantity),
-            };
+            }
 
+            console.log(formData)
             const { data } = await api.put(`/edit/product/${product?.id}`, formData)
 
             Toast.show({
@@ -128,7 +129,7 @@ const EditModal: React.FC<IEditModalProps> = ({
                                 placeholder="Digite o Valor do Produto"
                                 keyboardType="numeric"
                                 onChangeText={(text) => {
-                                    const onlyDigits = text.replace(/\D/g, "");
+                                    const onlyDigits = unformat(text);
                                     handleChangeForm(onlyDigits, "value");
                                 }}
                             />
