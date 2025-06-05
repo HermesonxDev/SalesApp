@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { Modal, View } from "react-native"
-import { Buttons, Container, Fields, Form } from "./styles"
+import { Modal, View, Switch } from "react-native"
+import { Buttons, Container, Fields, Form, SwitchField } from "./styles"
 import Toast from "react-native-toast-message"
 import api from "../../../Services/api"
 import Title from "../../../components/Title"
@@ -33,7 +33,8 @@ const EditModal: React.FC<IEditModalProps> = ({
         last_name: '',
         telephone: '',
         cpf_cnpj: '',
-        address: ''
+        address: '',
+        active: false
     })
 
     const handleChangeForm = (value: string, key: keyof CustomerForm) => {
@@ -92,6 +93,11 @@ const EditModal: React.FC<IEditModalProps> = ({
         }
     }
 
+    const toggleSwitch = () => setFormState((prev) => ({
+        ...prev, 
+        active: !formState.active 
+    }))
+
     useEffect(() => {
         if (customer) {
             setFormState({
@@ -99,7 +105,8 @@ const EditModal: React.FC<IEditModalProps> = ({
                 last_name: customer?.last_name || '',
                 telephone: customer?.telephone || '',
                 cpf_cnpj: customer?.cpf_cnpj || '',
-                address: customer?.address || ''
+                address: customer?.address || '',
+                active: !!customer?.active || false
             })
         }
     }, [customer])
@@ -114,8 +121,18 @@ const EditModal: React.FC<IEditModalProps> = ({
                     <Title>Editar Cliente</Title>
 
                     <Fields>
+                        <SwitchField>
+                            <Label padding="0 0 3px 3px">Ativo</Label>
+                            <Switch
+                                value={formState.active}
+                                onValueChange={toggleSwitch}
+                                thumbColor={'#fff'}
+                                trackColor={{ true: '#4CAF50', false: "#F44336" }}
+                            />
+                        </SwitchField>
+
                         <View>
-                            <Label padding="0 0 3px 3px">Nome *</Label>
+                            <Label padding="0 0 3px 3px">Nome</Label>
                             <Input
                                 value={formState.first_name}
                                 onChangeText={(text) => handleChangeForm(text, 'first_name')}
@@ -124,7 +141,7 @@ const EditModal: React.FC<IEditModalProps> = ({
                         </View>
 
                         <View>
-                            <Label padding="0 0 3px 3px">Sobrenome *</Label>
+                            <Label padding="0 0 3px 3px">Sobrenome</Label>
                             <Input
                                 value={formState.last_name}
                                 onChangeText={(text) => handleChangeForm(text, 'last_name')}
@@ -143,7 +160,7 @@ const EditModal: React.FC<IEditModalProps> = ({
                         </View>
 
                         <View>
-                            <Label padding="0 0 3px 3px">CPF / CNPJ *</Label>
+                            <Label padding="0 0 3px 3px">CPF / CNPJ</Label>
                             <Input
                                 value={formState.cpf_cnpj}
                                 onChangeText={(text) => handleChangeForm(text, 'cpf_cnpj')}

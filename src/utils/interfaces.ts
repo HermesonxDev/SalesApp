@@ -15,7 +15,8 @@ export interface CustomerForm {
 	last_name: string,
 	telephone: string,
 	cpf_cnpj: string,
-	address: string
+	address: string,
+    active?: boolean
 }
 
 export interface Customer {

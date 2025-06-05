@@ -27,3 +27,11 @@ export const Buttons = styled.View`
     align-items: center;
     gap: 10px;
 `;
+
+export const SwitchField = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: 5%;
+`;

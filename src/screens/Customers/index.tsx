@@ -1,5 +1,5 @@
 import { FlatList, View } from "react-native"
-import { Container, Grid, Actions, Body, Text } from "./styles"
+import { Container, Grid, Actions, Body, Text, Marker } from "./styles"
 import { useEffect, useState } from "react"
 import { Feather } from "@expo/vector-icons"
 import { Customer, CustomerModals } from "../../utils/interfaces"
@@ -72,24 +72,30 @@ const Customers: React.FC = () => {
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => (
                         <Body>
-                        <Text>{item.first_name}</Text>
-                        <Actions>
-                            <Button
-                                width="22%"
-                                height="30px"
-                                onPress={() => handleIdentifiesCustomer(item.id, 'edit')}
-                            >
-                                <Feather name="edit-3" size={18} />
-                            </Button>
-                            
-                            <Button
-                                width="22%"
-                                height="30px"
-                                onPress={() => handleIdentifiesCustomer(item.id, 'delete')}
-                            >
-                                <Feather name="trash-2" size={18}/>
-                            </Button>
-                        </Actions>
+                            <Marker
+                                backgroundColor={!!item.active
+                                    ? "#4CAF50"
+                                    : "#F44336"
+                                }
+                            />
+                            <Text> {item.first_name}</Text>
+                            <Actions>
+                                <Button
+                                    width="35%"
+                                    height="30px"
+                                    onPress={() => handleIdentifiesCustomer(item.id, 'edit')}
+                                >
+                                    <Feather name="edit-3" size={18} />
+                                </Button>
+                                
+                                <Button
+                                    width="35%"
+                                    height="30px"
+                                    onPress={() => handleIdentifiesCustomer(item.id, 'delete')}
+                                >
+                                    <Feather name="trash-2" size={18}/>
+                                </Button>
+                            </Actions>
                         </Body>
                     )}
                     ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
