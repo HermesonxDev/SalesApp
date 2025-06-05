@@ -12,6 +12,7 @@ export const Form = styled.View`
     justify-content: space-between;
     height: 78%;
     width: 90%;
+    margin-bottom: 100px;
 `;
 
 export const Fields = styled.View`

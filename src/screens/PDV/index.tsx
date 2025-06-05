@@ -9,9 +9,9 @@ import Button from "../../components/Button"
 import Loading from "../../components/Loading"
 import api from "../../Services/api"
 import Toast from "react-native-toast-message"
-import { Picker } from "@react-native-picker/picker"
 import { formatCurrencyBRL } from "../../utils/functions"
 import translate from "../../utils/translate"
+import Select from "../../components/Select"
 
 const PDV: React.FC = () => {
 
@@ -153,40 +153,25 @@ const PDV: React.FC = () => {
                 <Title>Venda</Title>
 
                 <Fields>
-                    <View>
-                        <Label padding="0 0 3px 3px">Cliente *</Label>
-                        <Picker
-                            selectedValue={formState.customer_id}
-                            onValueChange={(value) => handleChangeForm(value, 'customer_id')}
-                            style={{ borderWidth: 1 }}
-                        >
-                            <Picker.Item label="Selecione um cliente" value={0} />
-                            {customers.map(customer => (
-                                <Picker.Item
-                                    key={customer.id}
-                                    label={customer.first_name + ' ' + customer.last_name}
-                                    value={customer.id}
-                                />
-                            ))}
-                        </Picker>
-                    </View>
+                    <Select
+                        data={customers}
+                        field="customer_id"
+                        label="Cliente *"
+                        value={formState.customer_id}
+                        onChange={handleChangeForm}
+                        onLabel={(item) => `${item.first_name} ${item.last_name}`}
+                        onValue={(item) => item.id}
+                    />
 
-                    <View>
-                        <Label padding="0 0 3px 3px">Produto *</Label>
-                        <Picker
-                            selectedValue={formState.product_id}
-                            onValueChange={(value) => handleChangeForm(value, 'product_id')}
-                        >
-                            <Picker.Item label="Selecione um produto" value={0} />
-                            {products.map(product => (
-                                <Picker.Item
-                                    key={product.id}
-                                    label={product.name}
-                                    value={product.id}
-                                />
-                            ))}
-                        </Picker>
-                    </View>
+                    <Select
+                        data={products}
+                        field="product_id"
+                        label="Produto *"
+                        value={formState.product_id}
+                        onChange={handleChangeForm}
+                        onLabel={(item) => `${item.name}`}
+                        onValue={(item) => item.id}
+                    />
 
                     <View>
                         <Label padding="0 0 3px 3px">Quantidade *</Label>
