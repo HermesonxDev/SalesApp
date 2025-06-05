@@ -35,7 +35,7 @@ const AddProduct: React.FC = () => {
 
             const formData = {
                 ...formState,
-                value: parseFloat(unformat(formState.value)),
+                value: parseFloat(unformat(formState.value)) / 100,
                 quantity: parseFloat(formState.quantity),
             };
 

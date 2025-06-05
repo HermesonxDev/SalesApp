@@ -5,12 +5,12 @@ import { Product, ProductForm } from "../../../utils/interfaces"
 import Toast from "react-native-toast-message"
 import api from "../../../Services/api"
 import translate from "../../../utils/translate"
-import Loading from "../../../components/Loading"
 import Label from "../../../components/Label"
 import Input from "../../../components/Input"
 import Title from "../../../components/Title"
-import { formatCurrencyBRL, unformat } from "../../../utils/functions"
 import Button from "../../../components/Button"
+import Loading from "../../../components/Loading"
+import { formatCurrencyBRL, unformat } from "../../../utils/functions"
 
 interface IEditModalProps {
     product: Product | null,
@@ -48,11 +48,10 @@ const EditModal: React.FC<IEditModalProps> = ({
 
             const formData = {
                 ...formState,
-                value: parseFloat(unformat(formState.value)),
+                value: parseFloat(unformat(formState.value)) / 100,
                 quantity: parseFloat(formState.quantity),
             }
 
-            console.log(formData)
             const { data } = await api.put(`/edit/product/${product?.id}`, formData)
 
             Toast.show({

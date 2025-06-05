@@ -29,17 +29,14 @@ export function format_CPF_and_CNPJ(value: string): string {
   }
 }
 
-export const formatCurrencyBRL = (value: string): string => {
-  const numeric = value.replace(/\D/g, '');
-  if (!numeric) return '';
-
-  const number = (parseFloat(numeric) / 100).toFixed(2);
-  const formatted = Number(number).toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-  return formatted;
-};
+export function formatCurrencyBRL(value: string): string {
+    const cleanValue = value.replace(/\D/g, "");
+    const formattedValue = (Number(cleanValue) / 100).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+    });
+    return formattedValue;
+}
 
 export function unformat(value: string): string {
   return value.replace(/\D/g, '');
