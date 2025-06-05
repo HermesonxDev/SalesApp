@@ -15,7 +15,7 @@ import { format_CPF_and_CNPJ, formatPhone, unformat } from "../../../utils/funct
 interface IEditModalProps {
     customer: Customer | null,
     visible: boolean,
-    onClose(): void,
+    onClose(value: boolean, modal: string): void,
     onRefresh(): void
 }
 
@@ -79,7 +79,7 @@ const EditModal: React.FC<IEditModalProps> = ({
                 visibilityTime: 3500
             })
 
-            onClose()
+            onClose(false, 'edit')
             onRefresh()
             setLoading(false)
         } catch (error) {
@@ -183,11 +183,14 @@ const EditModal: React.FC<IEditModalProps> = ({
                         <Button 
                             width="50%"
                             backgroundColor="#4CAF50"
-                            onPress={handleSendForm}>Salvar</Button>
+                            onPress={handleSendForm}
+                        >Salvar</Button>
+
                         <Button 
                             width="50%"
                             backgroundColor="#F44336"
-                            onPress={onClose}>Cancelar</Button>
+                            onPress={() => onClose(false, 'edit')}
+                        >Cancelar</Button>
                     </Buttons>
                 </Form>
 

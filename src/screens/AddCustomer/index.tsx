@@ -119,7 +119,7 @@ const AddCustomer: React.FC = () => {
                             value={formState.telephone}
                             onChangeText={(text) => handleChangeForm(text, 'telephone')}
                             placeholder="Digite o Telefone do Cliente"
-                            keyboardType="phone-pad"
+                            keyboardType="numeric"
                         />
                     </View>
 
@@ -129,7 +129,7 @@ const AddCustomer: React.FC = () => {
                             value={formState.cpf_cnpj}
                             onChangeText={(text) => handleChangeForm(text, 'cpf_cnpj')}
                             placeholder="Digite o CPF/CNPJ do Cliente"
-                            keyboardType="phone-pad"
+                            keyboardType="numeric"
                         />
                     </View>
 

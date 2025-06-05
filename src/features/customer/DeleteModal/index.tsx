@@ -12,7 +12,7 @@ import translate from "../../../utils/translate"
 interface IDeleteModalProps {
     customer: Customer | null,
     visible: boolean,
-    onClose(): void,
+    onClose(value: boolean, modal: string): void,
     onRefresh(): void
 }
 
@@ -37,7 +37,7 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
                 visibilityTime: 3500
             })
 
-            onClose()
+            onClose(false, 'delete')
             onRefresh()
             setLoading(false)
         } catch (error) {
@@ -72,7 +72,7 @@ const DeleteModal: React.FC<IDeleteModalProps> = ({
                         <Button 
                             width="50%"
                             backgroundColor="#F44336"
-                            onPress={onClose}>Cancelar</Button>
+                            onPress={() => onClose(false, 'delete')}>Cancelar</Button>
                     </Options>
                 </Form>
 

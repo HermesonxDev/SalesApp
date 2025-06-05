@@ -75,14 +75,14 @@ const Customers: React.FC = () => {
             <EditModal
                 customer={customer}
                 visible={modals.edit}
-                onClose={() => handleModals(false, 'edit')}
+                onClose={handleModals}
                 onRefresh={getCustomers}
             />
 
             <DeleteModal
                 customer={customer}
                 visible={modals.delete}
-                onClose={() => handleModals(false, 'delete')}
+                onClose={handleModals}
                 onRefresh={getCustomers}
             />
         </Container>

@@ -23,7 +23,7 @@ const List: React.FC<IListProps> = ({ data, onEdit, onDelete }) => {
                                 : "#F44336"
                             }
                         />
-                        <Text> {item.first_name}</Text>
+                        <Text> {item.first_name || item.name}</Text>
                         <Actions>
                             <Button
                                 width="35%"

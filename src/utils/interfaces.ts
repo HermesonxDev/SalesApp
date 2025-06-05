@@ -5,9 +5,27 @@ export interface AuthForm {
 
 export interface ProductForm {
     name: string,
-    value: number,
+    value: string,
     description: string,
-    quantity: number
+    quantity: string,
+    active?: boolean
+}
+
+export interface Product {
+    id: number,
+    name: string,
+    description: string,
+    value: string,
+    quantity: string,
+    active: number,
+    deleted: number,
+    created_at: string,
+    updated_at: string
+}
+
+export interface ProductModals {
+    edit: boolean,
+    delete: boolean
 }
 
 export interface CustomerForm {
