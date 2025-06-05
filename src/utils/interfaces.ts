@@ -62,3 +62,17 @@ export interface PDVForm {
 	description: string,
 	value: string
 }
+
+export interface Order {
+    id: number,
+    customer_id: number,
+    product_id: number,
+    product_quantity: string,
+    description: string,
+    value: string,
+    finished: number,
+    canceled: number,
+    deleted: number,
+    created_at: string,
+    updated_at: string
+}

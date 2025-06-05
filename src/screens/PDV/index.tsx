@@ -70,7 +70,7 @@ const PDV: React.FC = () => {
             const formData = {
                 ...formState,
                 value: parseFloat(formState.value),
-                quantity: parseFloat(formState.product_quantity)
+                product_quantity: parseFloat(formState.product_quantity)
             }
 
             const { data } = await api.post('/create/order', formData)

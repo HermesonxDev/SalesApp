@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Container } from "./styles"
+import { Feather } from "@expo/vector-icons"
 import { Product, ProductModals } from "../../utils/interfaces"
 import Toast from "react-native-toast-message"
 import api from "../../Services/api"
@@ -61,13 +62,21 @@ const Products: React.FC = () => {
     return (
         <Container>
             <Title
-                margin="0 11% 0 0"
+                margin="0 8% 0 0"
             >Produtos Cadastrados</Title>
 
             <List
                 data={products}
-                onEdit={handleIdentifiesProduct}
-                onDelete={handleIdentifiesProduct}
+                actions={{
+                    option1: {
+                        icon: <Feather name="edit-3" size={18} />,
+                        onPress: (item) => handleIdentifiesProduct(item.id, 'edit')
+                    },
+                    option2: {
+                        icon: <Feather name="trash-2" size={18}/>,
+                        onPress: (item) => handleIdentifiesProduct(item.id, 'delete')
+                    }
+                }}
             />
         
             <Loading visible={loading} />

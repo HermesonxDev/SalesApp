@@ -1,5 +1,6 @@
-import { Container } from "./styles"
 import { useEffect, useState } from "react"
+import { Container } from "./styles"
+import { Feather } from "@expo/vector-icons"
 import { Customer, CustomerModals } from "../../utils/interfaces"
 import Toast from "react-native-toast-message"
 import api from "../../Services/api"
@@ -66,8 +67,16 @@ const Customers: React.FC = () => {
 
             <List
                 data={customers}
-                onEdit={handleIdentifiesCustomer}
-                onDelete={handleIdentifiesCustomer}
+                actions={{
+                    option1: {
+                        icon: <Feather name="edit-3" size={18} />,
+                        onPress: (item) => handleIdentifiesCustomer(item.id, 'edit')
+                    },
+                    option2: {
+                        icon: <Feather name="trash-2" size={18}/>,
+                        onPress: (item) => handleIdentifiesCustomer(item.id, 'delete')
+                    }
+                }}
             />
             
             <Loading visible={loading} />

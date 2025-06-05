@@ -32,7 +32,7 @@ export const Marker = styled.View<IMarkerProps>`
 export const Text = styled.Text`
     font-size: 18px;
     font-weight: bold;
-    width: 70%;
+    width: 60%;
 `;
 
 export const Actions = styled.View`
@@ -40,5 +40,5 @@ export const Actions = styled.View`
     flex-direction: row;
     justify-content: flex-end;
     gap: 8px;
-    width: 30%;
+    width: 40%;
 `;
